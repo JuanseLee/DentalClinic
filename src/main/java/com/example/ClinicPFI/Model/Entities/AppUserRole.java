@@ -1,4 +1,5 @@
 package com.example.ClinicPFI.Model.Entities;
 
-public class AppUserRole {
+public enum AppUserRole {
+    USER;
 }

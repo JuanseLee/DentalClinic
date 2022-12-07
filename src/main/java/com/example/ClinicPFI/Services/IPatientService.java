@@ -9,7 +9,7 @@ import java.util.Set;
 @Service
 public interface IPatientService {
 
-    void save (PatientDto patientDto);
+    void save (PatientDto patient);
     void deletePatient (Long id);
     void updatePatientDto (PatientDto patientDto);
     Optional <PatientDto> getPatient (Long id);

@@ -9,9 +9,9 @@ import java.util.Set;
 @Service
 public interface IDentistService  {
 
-    void saveDentist (DentistDto patientDto);
+    DentistDto saveDentist (DentistDto dentistDto);
     void deleteDentist (Long id);
-    void updateDentistDto (DentistDto patientDto);
+    void updateDentistDto (DentistDto dentistDto);
     Optional<DentistDto> getDentistDto (Long id);
     Set<DentistDto> getAll();
 }

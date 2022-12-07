@@ -1,6 +1,7 @@
 package com.example.ClinicPFI.Services.ServiceImpl;
 
-import com.example.ClinicPFI.Model.Dto.UserDto;
+import com.example.ClinicPFI.Exceptions.BadRequestException;
+import com.example.ClinicPFI.Model.Entities.AppUser;
 import com.example.ClinicPFI.Repositories.IUserRepository;
 import com.example.ClinicPFI.Services.IUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,23 +23,7 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public UserDto save(UserDto UserDto) {
+    public void saveUser(AppUser appUser) throws BadRequestException {
 
-        return null;
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-    @Override
-    public UserDto updateUserDto(UserDto UserDto) {
-        return null;
-    }
-
-    @Override
-    public UserDto getUserDto(UserDto UserDto) {
-        return null;
     }
 }

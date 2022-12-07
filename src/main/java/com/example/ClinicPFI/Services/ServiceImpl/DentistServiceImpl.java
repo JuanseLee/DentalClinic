@@ -12,22 +12,30 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
+
 @Service
 
 public class DentistServiceImpl implements IDentistService {
 
+    private static final Logger LOGGER = Logger.getLogger(String.valueOf(DentistServiceImpl.class));
     @Autowired
     private IDentistRepository dentistRepository;
+
+    public DentistServiceImpl(IDentistRepository dentistRepository) {
+        this.dentistRepository = dentistRepository;
+    }
 
     @Autowired
     ObjectMapper mapper;
     @Override
-    public void saveDentist(DentistDto dentistDto) {
+    public DentistDto saveDentist(DentistDto dentistDto) {
 
 
         Dentist dentist =mapper.convertValue(dentistDto, Dentist.class);
 
         dentistRepository.save(dentist);
+        return dentistDto;
     }
 
     @Override

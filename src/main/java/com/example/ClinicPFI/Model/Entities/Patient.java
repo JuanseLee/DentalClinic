@@ -20,10 +20,16 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String name, lastname, IDNumber, role;
+    private String name, lastname, IDNumber;
 
     private LocalDate admissionDate;
 
+    public Patient(String name, String lastname, String IDNumber, LocalDate admissionDate) {
+        this.name = name;
+        this.lastname = lastname;
+        this.IDNumber = IDNumber;
+        this.admissionDate = admissionDate;
+    }
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")

@@ -2,6 +2,7 @@ package com.example.ClinicPFI.Model.Dto;
 
 import javax.persistence.*;
 
+import com.example.ClinicPFI.Model.Entities.Address;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -18,8 +19,10 @@ public class PatientDto {
     @Id
     private Long id;
 
-    private String name, lastname, address;
+    private String name, lastname;
 
     private LocalDate admissionDate;
+
+    private Address address;
 
 }

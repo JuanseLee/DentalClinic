@@ -17,6 +17,8 @@ public class DentistDto {
 
     private String name, lastname;
 
-
-
+    public DentistDto(String name, String lastname) {
+        this.name = name;
+        this.lastname = lastname;
+    }
 }
