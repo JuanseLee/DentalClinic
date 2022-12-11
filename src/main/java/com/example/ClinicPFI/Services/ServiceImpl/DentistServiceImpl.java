@@ -30,6 +30,8 @@ public class DentistServiceImpl implements IDentistService {
     ObjectMapper mapper;
     @Override
     public DentistDto saveDentist(DentistDto dentistDto) {
+        LOGGER.info("Creating dentist");
+
 
 
         Dentist dentist =mapper.convertValue(dentistDto, Dentist.class);
@@ -40,6 +42,8 @@ public class DentistServiceImpl implements IDentistService {
 
     @Override
     public Optional<DentistDto> getDentistDto(Long id) {
+        LOGGER.info("Consulting Dentist");
+
         Optional<Dentist> dentist = dentistRepository.findById(id);
         DentistDto dentistDto = null;
         if(dentist.isPresent())
@@ -49,6 +53,8 @@ public class DentistServiceImpl implements IDentistService {
     }
     @Override
     public void updateDentistDto(DentistDto dentistDto) {
+        LOGGER.info("Updating Dentist");
+
         Dentist dentist =mapper.convertValue(dentistDto, Dentist.class);
 
         dentistRepository.save(dentist);;
@@ -56,6 +62,8 @@ public class DentistServiceImpl implements IDentistService {
 
     @Override
     public void deleteDentist(Long id) {
+        LOGGER.info("Deleting dentist");
+
         dentistRepository.deleteById(id);
 
     }
@@ -64,6 +72,8 @@ public class DentistServiceImpl implements IDentistService {
 
     @Override
     public Set<DentistDto> getAll() {
+        LOGGER.info("Getting all dentists");
+
 
         List<Dentist> dentists =  dentistRepository.findAll();
         Set<DentistDto> dentistsDto = new HashSet<>();

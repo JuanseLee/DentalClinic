@@ -12,9 +12,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
 @Service
 public class PatientServiceImpl implements IPatientService {
+    private static final Logger LOGGER = Logger.getLogger(String.valueOf(Patient.class));
+
     @Autowired
     private IPatientRepository patientRepository;
 
@@ -23,6 +26,7 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public void save(PatientDto patientDto) {
+        LOGGER.info("Saving patient");
 
 
         Patient patient =mapper.convertValue(patientDto, Patient.class);
@@ -32,6 +36,7 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public Optional<PatientDto> getPatient(Long id) {
+        LOGGER.info("Getting patient ");
         Optional<Patient> patient = patientRepository.findById(id);
         PatientDto patientDto = null;
         if(patient.isPresent())
@@ -41,6 +46,7 @@ public class PatientServiceImpl implements IPatientService {
     }
     @Override
     public void updatePatientDto(PatientDto patientDto) {
+        LOGGER.info("Updating patient");
         Patient patient =mapper.convertValue(patientDto, Patient.class);
 
         patientRepository.save(patient);
@@ -48,6 +54,7 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public void deletePatient(Long id) {
+        LOGGER.info("Deleting patient ");
         patientRepository.deleteById(id);
 
     }
@@ -56,6 +63,7 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public Set<PatientDto> getAll() {
+        LOGGER.info("Getting list of all patients");
 
        List<Patient> patients =  patientRepository.findAll();
        Set<PatientDto> patientsDto = new HashSet<>();

@@ -5,6 +5,7 @@ import com.example.ClinicPFI.Model.Entities.Appointment;
 import com.example.ClinicPFI.Repositories.AppointmentRepository;
 import com.example.ClinicPFI.Services.IAppointmentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ import java.util.Optional;
 import java.util.Set;
 @Service
 public class AppointmentServiceImp implements IAppointmentService {
+    private static final Logger LOGGER = Logger.getLogger(AddressServiceImpl.class);
+
     @Autowired
     private final AppointmentRepository appointmentRepository;
     @Autowired
@@ -26,6 +29,7 @@ public class AppointmentServiceImp implements IAppointmentService {
 
     @Override
     public void save(AppointmentDto appointmentDto) {
+        LOGGER.info("Saving Appointment");
 
 
         Appointment appointment =mapper.convertValue(appointmentDto, Appointment.class);
@@ -35,6 +39,8 @@ public class AppointmentServiceImp implements IAppointmentService {
 
     @Override
     public Optional<AppointmentDto> getAppointmentDto(Long id) {
+        LOGGER.info("Saving Appointment");
+
         Optional<Appointment> appointment = appointmentRepository.findById(id);
         AppointmentDto appointmentDto = null;
         if(appointment.isPresent())
@@ -44,6 +50,7 @@ public class AppointmentServiceImp implements IAppointmentService {
     }
     @Override
     public void updateAppointmentDto(AppointmentDto appointmentDto) {
+        LOGGER.info("Appointment updated");
         Appointment appointment =mapper.convertValue(appointmentDto, Appointment.class);
 
         appointmentRepository.save(appointment);;
@@ -51,6 +58,8 @@ public class AppointmentServiceImp implements IAppointmentService {
 
     @Override
     public void deleteAppointment(Long id) {
+        LOGGER.info("Appointment deleted");
+
         appointmentRepository.deleteById(id);
 
     }
@@ -59,6 +68,8 @@ public class AppointmentServiceImp implements IAppointmentService {
 
     @Override
     public Set<AppointmentDto> getAll() {
+        LOGGER.info("Get all appointments");
+
 
         List<Appointment> appointments =  appointmentRepository.findAll();
         Set<AppointmentDto> appointmentsDto = new HashSet<>();
